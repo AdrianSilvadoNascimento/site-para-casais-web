@@ -1,0 +1,100 @@
+<section id="register">
+  <article>
+    <div class="form">
+      <div class="register-card">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <h2 class="auth-header">Registrar Conta</h2>
+          <mat-form-field appearance="outline" class="custom-mat-form-field">
+            <mat-label for="name" class="custom-mat-label">Seu nome</mat-label>
+            <input
+              matInput
+              type="text"
+              class="form-control"
+              class="custom-mat-input"
+              name="name"
+              id="name"
+              formControlName="name"
+              autocomplete="on"
+              required
+            />
+            <mat-error *ngIf="registerForm.get('name')?.hasError('required')">
+              O nome é obrigatório
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="custom-mat-form-field">
+            <mat-label for="email" class="custom-mat-label">Seu email</mat-label>
+            <input
+              matInput
+              type="email"
+              class="form-control"
+              class="custom-mat-input"
+              name="email"
+              id="email"
+              autocomplete="on"
+              #email
+              formControlName="email"
+              required
+            />
+            <mat-error *ngIf="registerForm.get('email')?.hasError('required')">
+              Email é obrigatório
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="custom-mat-form-field">
+            <mat-label for="password" class="custom-mat-label">Sua senha</mat-label>
+            <input
+              matInput
+              type="password"
+              class="form-control"
+              class="custom-mat-input"
+              name="password"
+              id="password"
+              #password
+              formControlName="password"
+              required
+            />
+            <mat-error *ngIf="registerForm.get('password')?.hasError('required')">
+              A senha é obrigatória
+            </mat-error>
+            <mat-error *ngIf="registerForm.get('password')?.hasError('missingSpecialChar')">
+              A senha precisa conter um caractere especial
+            </mat-error>
+            <mat-error *ngIf="registerForm.get('password')?.hasError('minLength')">
+              A senha deve ter pelo menos 6 caracteres
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="custom-mat-form-field">
+            <mat-label for="age" class="custom-mat-label">Informe sua idade</mat-label>
+            <input
+              matInput
+              type="number"
+              class="form-control"
+              class="custom-mat-input"
+              name="age"
+              id="age"
+              formControlName="age"
+              min="10"
+              max="100"
+              maxlength="3"
+              required
+            />
+            <mat-error *ngIf="registerForm.get('age')?.hasError('required')">
+              É preciso adicionar sua idade
+            </mat-error>
+          </mat-form-field>
+          <button
+            mat-raised-button
+            [disabled]="registerForm.invalid"
+            [class]="registerForm.invalid ? 'disabled' : ''"
+            type="submit"
+          >
+            Cadastrar
+          </button>
+
+          <a routerLink="/entrar">
+            Já possui uma conta? Entrar na Conta
+          </a>
+        </form>
+      </div>
+    </div>
+  </article>
+</section>

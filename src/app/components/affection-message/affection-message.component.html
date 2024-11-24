@@ -1,0 +1,21 @@
+<section>
+  @if (currentUser) {
+    <article class="background">
+      <div class="card-container">
+        <div class="card-header">
+          <h3>De: {{ currentUser.name }} Para: {{ currentUser.spouse_name }}</h3>
+        </div>
+
+        <article class="card-content">
+          <img [src]="currentUser.couple_image" alt="{{currentUser.name}} & {{currentUser.spouse_name}}" />
+          <p>{{ currentUser.affection_message }}</p>
+
+          <div class="affection-count">
+            <h3>Juntos Desde: {{ currentUser.couple_start | date: "dd/MM/yyyy" }}</h3>
+            <h3>Já são: {{ daysCount }} dias e contando {{ currentTime | date: 'HH:mm:ss' }}</h3>
+          </div>
+        </article>
+      </div>
+    </article>
+  }
+</section>

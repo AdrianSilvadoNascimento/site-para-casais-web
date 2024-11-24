@@ -1,0 +1,65 @@
+<section id="login">
+  <article>
+    <button routerLink="/inicio">Retornar</button>
+    <div *ngIf="imagePreview" class="image-preview">
+      <img [src]="imagePreview" alt="Pré-visualização da imagem" />
+    </div>
+    <div class="form">
+      <div class="login-card">
+        <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+          <h2 class="auth-header">Registra sua pessoa predileta</h2>
+          <mat-form-field appearance="outline" class="custom-mat-form-field">
+            <mat-label for="spouse_name" class="custom-mat-label">Nos conta o nome do teu &#64;</mat-label>
+            <input
+              matInput
+              type="text"
+              class="form-control"
+              class="custom-mat-input"
+              name="spouse_name"
+              id="spouse_name"
+              formControlName="spouse_name"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="custom-mat-form-field">
+            <mat-label for="couple_start" class="custom-mat-label">E quando começou?</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              class="form-control"
+              class="custom-mat-input"
+              name="couple_start"
+              id="couple_start"
+              formControlName="couple_start"
+            >
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="custom-mat-form-field">
+            <mat-label for="affection_message" class="custom-mat-label">Deixa uma mensagem bonita para el&#64; ver</mat-label>
+            <input
+              matInput
+              type="text"
+              class="form-control"
+              class="custom-mat-input"
+              name="affection_message"
+              id="affection_message"
+              formControlName="affection_message"
+            />
+          </mat-form-field>
+          <div class="image-upload">
+            <label for="couple_image">Agora adiciona a melhor foto de vocês (opcional)</label>
+            <input
+              type="file"
+              accept="image/*"
+              class="form-control"
+              name="couple_image"
+              id="couple_image"
+              (change)="onImageSelected($event)"
+            />
+          </div>
+          <button mat-raised-button type="submit">Salvar</button>
+        </form>
+      </div>
+    </div>
+  </article>
+</section>

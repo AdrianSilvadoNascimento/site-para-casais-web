@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+  // .delete_icon {
+  //   color: red;
+  // }
+
+  // .auth-header {
+  //   text-align: center;
+  //   position: relative;
+  //   top: calc(50% - 200px);
+  //   transform: translateY(-50%);
+  //   font-weight: bold;
+  //   margin-bottom: 20px;
+  // }
+}
+
+@media screen and (min-width: 360px) and (max-width: 480px) {
+  .table-content {
+    max-width: 480px;
+    min-width: 360px;
+    overflow-x: scroll;
+  }
+
+  .auth-header {
+    top: calc(50% - 280px) !important;
+  }
+}

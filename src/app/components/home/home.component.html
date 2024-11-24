@@ -1,0 +1,31 @@
+<section>
+  <article class="background">
+    <div class="card-container">
+      <div class="card-header">
+        <h3>Você está cortejando {{ currentUser.spouse_name }}</h3>
+
+        <div class="header-buttons">
+          <button mat-raised-button (click)="gerarQrCode()">Gerar QR Code</button>
+          <button mat-raised-button routerLink="/registrar-informacoes-pessoa">Atualizar Informações</button>
+        </div>
+      </div>
+
+      <article class="card-content">
+
+        <h3>Sua melhor foto</h3>
+        <img [src]="currentUser.couple_image" alt="{{currentUser.name}} & {{currentUser.spouse_name}}" />
+        <p>{{currentUser.affection_message}}</p>
+
+        <div class="affection-count">
+          <h3>Juntos Desde: {{currentUser.couple_start | date: "dd/MM/yyyy"}}</h3>
+          <h3>Já são: {{daysCount}} dias e contando {{ currentTime | date: 'HH:mm:ss' }}</h3>
+        </div>
+
+        @if (qrCode && qrCode.length) {
+          <h3>Seu QR Code</h3>
+          <img [src]="qrCode" alt="QR Code" />
+        }
+      </article>
+    </div>
+  </article>
+</section>
