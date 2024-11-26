@@ -1,18 +1,17 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { UserModel } from '../models/user.model';
 import { environment } from '../../environments/environment';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { RegisterUserModel } from '../models/register-user.model';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   private readonly apiUrl: string = `${environment.apiUrl}/user`
-  private readonly qrCodeApiUrl: string = `${environment.qrCodeApiUrl}${environment.domain}`
 
   private userData = new BehaviorSubject<UserModel>(new UserModel())
   $userData = this.userData.asObservable()
@@ -53,6 +52,15 @@ export class UserService {
   updateUser(userData: UserModel): Observable<UserModel> {
     const currentUserId = localStorage.getItem('user_id')?.toString()!!
     return this.http.put<UserModel>(`${this.apiUrl}/update-user/${currentUserId}`, userData, { headers: this.headers }).pipe(
+      tap(res => {
+        this.updateUserData(res)
+        localStorage.setItem('currentUser', JSON.stringify(res))
+      })
+    )
+  }
+
+  likePhoto(isLiked: boolean, currentUserId: string): Observable<UserModel> {
+    return this.http.put<UserModel>(`${this.apiUrl}/like-couple-photo/${currentUserId}`, { isLiked }, { headers: this.headers }).pipe(
       tap(res => {
         this.updateUserData(res)
         localStorage.setItem('currentUser', JSON.stringify(res))

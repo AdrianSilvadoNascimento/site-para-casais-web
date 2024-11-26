@@ -1,21 +1,67 @@
+<div id="background"></div>
 <section>
   @if (currentUser) {
     <article class="background">
       <div class="card-container">
         <div class="card-header">
           <h3>De: {{ currentUser.name }} Para: {{ currentUser.spouse_name }}</h3>
+          <p>Desde: {{ currentUser.couple_start | date: "dd/MM/yyyy" }}</p>
+          <p>Juntos por: {{ daysCount }} dias e contando {{ currentTime | date: 'HH:mm:ss' }}</p>
         </div>
 
         <article class="card-content">
-          <img [src]="currentUser.couple_image" alt="{{currentUser.name}} & {{currentUser.spouse_name}}" />
-          <p>{{ currentUser.affection_message }}</p>
+          <div class="polaroid">
+            <div class="polaroid-img-block">
+              <img [src]="currentUser.couple_image" alt="{{currentUser.name}} & {{currentUser.spouse_name}}" />
+            </div>
+            <div class="footer">
+              <div class="action-buttons">
+                <div class="buttons">
+                  <a (click)="like()">
+                    <fa-icon [icon]="!isLiked ? faRegularHeart : faHeart" size="2xl"></fa-icon>
+                  </a>
 
-          <div class="affection-count">
-            <h3>Juntos Desde: {{ currentUser.couple_start | date: "dd/MM/yyyy" }}</h3>
-            <h3>Já são: {{ daysCount }} dias e contando {{ currentTime | date: 'HH:mm:ss' }}</h3>
+                  <a (click)="drawMessage = !drawMessage">
+                    <fa-icon [icon]="faComment" size="2xl"></fa-icon>
+                  </a>
+                </div>
+                <p>{{ currentUser.affection_message }}</p>
+              </div>
+            </div>
           </div>
         </article>
       </div>
     </article>
+
+    @if (drawMessage) {
+      <form [formGroup]="commentForm" (ngSubmit)="onSubmitComment()">
+        <mat-form-field appearance="outline" class="custom-mat-form-field">
+          <input
+            matInput
+            type="text"
+            class="form-control"
+            class="custom-mat-input"
+            placeholder="Ex:. Amo você!"
+            name="message"
+            id="message"
+            formControlName="message"
+          />
+        </mat-form-field>
+        <button mat-raised-button type="submit">
+          <fa-icon class="icon" [icon]="sendMessage" size="xl"></fa-icon>
+        </button>
+      </form>
+    }
+
+    @if (comments.length) {
+      <div class="comments">
+        @for (comment of comments; track comment.id) {
+          <div class="block-to-draw-line">
+            <fa-icon [icon]="faUser" size="xl"></fa-icon>
+            <p>{{ comment.created_at | date: "dd/MM/yyyy" }} - {{ comment.message }}</p>
+          </div>
+        }
+      </div>
+    }
   }
 </section>
