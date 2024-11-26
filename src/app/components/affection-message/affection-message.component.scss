@@ -160,3 +160,40 @@ section {
     }
   }
 }
+
+@media screen and (min-width: 360px) and (max-width: 480px) {
+  #background {
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: 5;
+  }
+
+  section {
+    width: 85%;
+
+    .comments {
+      width: 100%;
+    }
+
+    .card-container {
+      .card-content {
+        .polaroid {
+          width: 275px !important;
+
+          .polaroid-img-block {
+            width: 250px;
+
+            img {
+              width: 150px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
