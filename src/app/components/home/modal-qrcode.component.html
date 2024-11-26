@@ -1,0 +1,8 @@
+<div class="background">
+  @if (data.qrCode && data.qrCode.length) {
+    <div class="content">
+      <h3>Seu QR Code</h3>
+      <img [src]="data.qrCode" alt="QR Code" />
+    </div>
+  }
+</div>

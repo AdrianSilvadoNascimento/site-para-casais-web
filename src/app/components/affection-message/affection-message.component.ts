@@ -65,11 +65,12 @@ export class AffectionMessageComponent implements OnInit {
     if (this.currentUserId.length) {
       this.userService.getUser(this.currentUserId).subscribe(res => {
         this.currentUser = res;
+        this.isLiked = res.photo_liked
         this.calculateDays();
       })
     }
 
-    const storedLike = localStorage.getItem('liked')
+    const storedLike = localStorage.getItem('photo_liked')
     if (storedLike) {
       this.isLiked = JSON.parse(storedLike)
     }
@@ -95,11 +96,11 @@ export class AffectionMessageComponent implements OnInit {
   like(): void {
     this.isLiked = !this.isLiked
     this.userService.likePhoto(this.isLiked, this.currentUserId).subscribe(() => {
-      localStorage.setItem('liked', JSON.stringify(this.isLiked))
+      localStorage.setItem('photo_liked', JSON.stringify(this.isLiked))
     }, (err: any) => {
       console.error(err)
       alert('Failed to like photo')
-      this.isLiked = JSON.parse(localStorage.getItem('liked')!!)
+      this.isLiked = JSON.parse(localStorage.getItem('photo_liked')!!)
     })
   }
 

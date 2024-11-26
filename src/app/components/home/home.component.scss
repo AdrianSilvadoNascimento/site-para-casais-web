@@ -1,13 +1,26 @@
+#home-background {
+  background-color: #FEFAE0;
+  height: 100%;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 5;
+}
+
 section {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  position: absolute;
-  min-width: 500px;
-  max-width: 1200px;
-  border: 0.2px solid #ccc;
+  position: relative;
+  width: 660px;
+  border: 1px solid #CCD5AE;
   border-radius: 8px;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
+  background-color: #E9EDC9;
+  box-shadow: 0 0.8px 3px 0 rgba(0, 0, 0, 0.2);
+  z-index: 10;
 
   article.background {
     display: flex;
@@ -20,13 +33,29 @@ section {
     .card-container {
       width: 100%;
 
+      .buttons {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        position: relative;
+        top: 0;
+        right: 5px;
+        gap: 10px;
+
+        button {
+          background: #CCD5AE;
+          height: 54px;
+        }
+      }
+
       .card-header {
         text-align: center;
 
-        .header-buttons {
+        .header {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          flex-direction: column;
         }
       }
 
@@ -35,25 +64,90 @@ section {
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        margin-bottom: 30px;
 
-        img {
-          width: 150px;
-          border-radius: 8px;
+        .polaroid {
+          width: 330px;
+          height: 300px;
+          background-color: #fff;
+          padding: 15px;
+          border-radius: 5px;
+          box-shadow: 0 1.5px 3px 1px rgba(0, 0, 0, 0.2);
+
+          .polaroid-img-block {
+            width: 100%;
+            height: 260px;
+            border-radius: 5px;
+            overflow: hidden;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              object-position: center;
+            }
+          }
+        }
+
+        .footer {
+          display: flex;
+          flex-direction: column;
+
+          .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+
+            .buttons {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              width: 25%;
+              position: relative;
+
+              a {
+                background: transparent;
+              }
+            }
+          }
         }
       }
     }
+  }
+}
 
-    button {
-      margin-top: 20px;
-      background: linear-gradient(to right, #a1c4fd, #c2e9fb, #d4fc79, #96e6a1, #fbc2eb, #a18cd1);
-      color: #000;
-      font-weight: 650;
-      cursor: pointer;
+@media screen and (min-width: 360px) and (max-width: 480px) {
+  #home-background {
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    z-index: 5;
+  }
 
-      :hover {
-        background: linear-gradient(to right, #7fb3ff, #a1d4ff, #b4ff7f, #6fe67f, #ff9ce6, #7f6cd1);
-        color: #000;
-        filter: brightness(2);
+  section {
+    width: 85%;
+
+    .comments {
+      width: 100%;
+    }
+
+    .card-container {
+      .card-content {
+        .polaroid {
+          width: 275px !important;
+
+          .polaroid-img-block {
+            width: 250px;
+
+            img {
+              width: 150px;
+            }
+          }
+        }
       }
     }
   }

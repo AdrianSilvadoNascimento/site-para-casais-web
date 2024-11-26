@@ -60,9 +60,12 @@ export class UserService {
   }
 
   likePhoto(isLiked: boolean, currentUserId: string): Observable<UserModel> {
+    console.log(isLiked)
     return this.http.put<UserModel>(`${this.apiUrl}/like-couple-photo/${currentUserId}`, { isLiked }, { headers: this.headers }).pipe(
       tap(res => {
         this.updateUserData(res)
+        console.log(res)
+        localStorage.setItem('photo_liked', JSON.stringify(res.photo_liked))
         localStorage.setItem('currentUser', JSON.stringify(res))
       })
     )
@@ -71,6 +74,7 @@ export class UserService {
   getUser(userId: string): Observable<UserModel> {
     return this.http.get<any>(`${this.apiUrl}/get-user/${userId}`).pipe(
       tap(res => {
+        console.log(res)
         localStorage.setItem('currentUser', JSON.stringify(res))
       })
     )

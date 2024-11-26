@@ -1,30 +1,44 @@
+<div id="home-background"></div>
 <section>
   <article class="background">
     <div class="card-container">
+      <div class="buttons">
+        <!-- <button mat-raised-button (click)="gerarQrCode()">Gerar QR Code</button> -->
+        <!-- <button mat-raised-button (click)="gerarQrCode()"> -->
+        <button mat-raised-button (click)="openDialog()">
+          <fa-icon [icon]="faQrCode" size="2xl"></fa-icon>
+        </button>
+        <!-- <button mat-raised-button routerLink="/registrar-informacoes-pessoa">Atualizar Informações</button> -->
+        <button mat-raised-button routerLink="/registrar-informacoes-pessoa">
+          <fa-icon [icon]="editPen" size="2xl"></fa-icon>
+        </button>
+      </div>
+
       <div class="card-header">
         <h3>Você está cortejando {{ currentUser.spouse_name }}</h3>
 
-        <div class="header-buttons">
-          <button mat-raised-button (click)="gerarQrCode()">Gerar QR Code</button>
-          <button mat-raised-button routerLink="/registrar-informacoes-pessoa">Atualizar Informações</button>
+        <div class="header">
+          <p>Desde: {{ currentUser.couple_start | date: "dd/MM/yyyy" }}</p>
+          <p>Juntos por: {{ daysCount }} dias e contando {{ currentTime | date: 'HH:mm:ss' }}</p>
         </div>
       </div>
 
       <article class="card-content">
-
-        <h3>Sua melhor foto</h3>
-        <img [src]="currentUser.couple_image" alt="{{currentUser.name}} & {{currentUser.spouse_name}}" />
-        <p>{{currentUser.affection_message}}</p>
-
-        <div class="affection-count">
-          <h3>Juntos Desde: {{currentUser.couple_start | date: "dd/MM/yyyy"}}</h3>
-          <h3>Já são: {{daysCount}} dias e contando {{ currentTime | date: 'HH:mm:ss' }}</h3>
+        <div class="polaroid">
+          <div class="polaroid-img-block">
+            <img [src]="currentUser.couple_image" alt="{{currentUser.name}} & {{currentUser.spouse_name}}" />
+          </div>
+          <div class="footer">
+            <div class="action-buttons">
+              <div class="buttons">
+                <a>
+                  <fa-icon [icon]="!isLiked ? faHeart : faLikedHeart" size="2xl"></fa-icon>
+                </a>
+              </div>
+              <p>{{ currentUser.affection_message }}</p>
+            </div>
+          </div>
         </div>
-
-        @if (qrCode && qrCode.length) {
-          <h3>Seu QR Code</h3>
-          <img [src]="qrCode" alt="QR Code" />
-        }
       </article>
     </div>
   </article>

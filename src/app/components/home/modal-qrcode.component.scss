@@ -1,0 +1,19 @@
+:host {
+  display: block;
+}
+
+.background {
+  background-color: #fff;
+  position: absolute;
+  width: 50vw;
+  height: 50vh;
+  border-radius: 8px;
+  padding: 8px 16px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
