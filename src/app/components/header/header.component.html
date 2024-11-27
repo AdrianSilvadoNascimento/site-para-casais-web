@@ -1,3 +1,8 @@
 @if (isLoggedIn) {
-  <button (click)="checkout()">Sair</button>
+  <div id="header">
+    <button mat-raised-button (click)="checkout()">
+      <fa-icon [icon]="exitIcon"></fa-icon>
+      Sair
+    </button>
+  </div>
 }

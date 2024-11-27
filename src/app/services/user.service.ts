@@ -16,6 +16,9 @@ export class UserService {
   private userData = new BehaviorSubject<UserModel>(new UserModel())
   $userData = this.userData.asObservable()
 
+  private isLoggedInData = new BehaviorSubject<boolean>(false)
+  $isLoggedIn = this.isLoggedInData.asObservable()
+
   readonly token: string | null = localStorage.getItem('token')
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
@@ -28,6 +31,10 @@ export class UserService {
     this.userData.next(userData)
   }
 
+  updateIsLoggedIn(isLoggedIn: boolean): void {
+    this.isLoggedInData.next(isLoggedIn)
+  }
+
   isLoggedIn(): boolean {
     return localStorage.getItem('token') !== null;
   }
@@ -37,6 +44,7 @@ export class UserService {
       tap((res: any) => {
         this.setCache(res)
         this.updateUserData(res.userData)
+        this.updateIsLoggedIn(true)
       })
     )
   }
@@ -64,7 +72,6 @@ export class UserService {
     return this.http.put<UserModel>(`${this.apiUrl}/like-couple-photo/${currentUserId}`, { isLiked }, { headers: this.headers }).pipe(
       tap(res => {
         this.updateUserData(res)
-        console.log(res)
         localStorage.setItem('photo_liked', JSON.stringify(res.photo_liked))
         localStorage.setItem('currentUser', JSON.stringify(res))
       })
@@ -85,6 +92,8 @@ export class UserService {
     localStorage.removeItem('expiresIn')
     localStorage.removeItem('user_id')
     localStorage.removeItem('currentUser')
+    localStorage.removeItem('isLoggedIn')
+    this.updateIsLoggedIn(false)
 
     this.router.navigate(['/entrar'])
   }
@@ -93,6 +102,7 @@ export class UserService {
     localStorage.setItem('token', data.token)
     localStorage.setItem('expiresIn', data.expiresIn)
     localStorage.setItem('user_id', data.userData.id)
+    localStorage.setItem('isLoggedIn', 'true')
     localStorage.setItem('currentUser', JSON.stringify(data.userData))
   }
 }

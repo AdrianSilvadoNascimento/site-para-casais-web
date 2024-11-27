@@ -23,7 +23,6 @@ import { CommentsOnCouplePhotoModel } from '../../models/comments-on-couple-phot
     NgFor,
     FontAwesomeModule,
     ReactiveFormsModule,
-    MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,

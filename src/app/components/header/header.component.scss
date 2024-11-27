@@ -1,0 +1,15 @@
+#header {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 99;
+
+  button {
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: #E9EDC9;
+  }
+}

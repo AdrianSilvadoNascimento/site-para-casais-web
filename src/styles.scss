@@ -6,18 +6,9 @@ body {
   margin: 0;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
-  // .delete_icon {
-  //   color: red;
-  // }
-
-  // .auth-header {
-  //   text-align: center;
-  //   position: relative;
-  //   top: calc(50% - 200px);
-  //   transform: translateY(-50%);
-  //   font-weight: bold;
-  //   margin-bottom: 20px;
-  // }
+  .auth-header {
+    color: #4d4d4d;
+  }
 }
 
 @media screen and (min-width: 360px) and (max-width: 480px) {

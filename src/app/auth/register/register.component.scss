@@ -13,14 +13,11 @@
     .form {
       .register-card {
         width: 350px;
-        // position: relative;
-        // left: 50%;
-        // top: 50%;
-        // transform: translate(-50%, -50%);
         padding: 25px 0 25px 0;
-        box-shadow: 0 8px 4px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 3px 2px rgba(0, 0, 0, 0.5);
         border-radius: 8px;
         border: 0.25px solid rgba(0, 0, 0, 0.25);
+        background-color: #E9EDC9;
         margin-bottom: 100px;
 
         form {
@@ -45,20 +42,20 @@
 
           button {
             margin-top: 20px;
-            background: linear-gradient(to right, #a1c4fd, #c2e9fb, #d4fc79, #96e6a1, #fbc2eb, #a18cd1);
-            color: #000;
+            background: #E9EDC9;
+            color: #4d4d4d;
             font-weight: 650;
 
             :hover {
-              background: linear-gradient(to right, #7fb3ff, #a1d4ff, #b4ff7f, #6fe67f, #ff9ce6, #7f6cd1);
-              color: #000;
-              filter: brightness(1.2);
+              background: #D4A373;
+              color: #4d4d4d;
+              filter: brightness(2);
             }
           }
 
           .disabled {
-            background: #ccc !important;
-            color: #4d4d4d !important;
+            background-color: #FEFAE0;
+            color: #CCD5AE;
           }
         }
       }

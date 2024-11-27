@@ -1,14 +1,10 @@
-<div id="home-background"></div>
 <section>
   <article class="background">
     <div class="card-container">
       <div class="buttons">
-        <!-- <button mat-raised-button (click)="gerarQrCode()">Gerar QR Code</button> -->
-        <!-- <button mat-raised-button (click)="gerarQrCode()"> -->
         <button mat-raised-button (click)="openDialog()">
           <fa-icon [icon]="faQrCode" size="2xl"></fa-icon>
         </button>
-        <!-- <button mat-raised-button routerLink="/registrar-informacoes-pessoa">Atualizar Informações</button> -->
         <button mat-raised-button routerLink="/registrar-informacoes-pessoa">
           <fa-icon [icon]="editPen" size="2xl"></fa-icon>
         </button>
@@ -19,7 +15,7 @@
 
         <div class="header">
           <p>Desde: {{ currentUser.couple_start | date: "dd/MM/yyyy" }}</p>
-          <p>Juntos por: {{ daysCount }} dias e contando {{ currentTime | date: 'HH:mm:ss' }}</p>
+          <p>Juntos por: <strong><u>{{ daysCount }}</u></strong> dias e contando {{ currentTime | date: 'HH:mm:ss' }}</p>
         </div>
       </div>
 

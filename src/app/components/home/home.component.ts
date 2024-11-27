@@ -65,7 +65,6 @@ export class HomeComponent implements OnInit {
       this.currentUser = JSON.parse(storedUser);
     }
 
-    console.log(this.currentUser);
     this.isLiked = this.currentUser.photo_liked;
     const storedLiked = localStorage.getItem('photo_liked');
     if (storedLiked) {
